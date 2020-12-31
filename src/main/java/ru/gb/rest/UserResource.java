@@ -42,7 +42,11 @@ public class UserResource {
 
     @PutMapping(consumes = "application/json", produces = "application/json")
     public User updateUser(@RequestBody User user) {
-        userRepository.save(user);
+        if (userRepository.findById(user.getId()).isPresent()) {
+            userRepository.save(user);
+        } else {
+            throw new NotFoundException();
+        }
         return user;
     }
 
