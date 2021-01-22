@@ -45,7 +45,7 @@
                     </th>
                     <th scope="col">Description</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Actions</th>
+                    <th sec:authorize="hasRole('ADMIN')" scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,7 +56,7 @@
                         900, RAM 8GB DDR3
                     </td>
                     <td th:text="${product.price}">$1000</td>
-                    <td >
+                    <td sec:authorize="hasRole('ADMIN')">
                         <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}">
                             <i class="fas fa-edit"></i>
                         </a>
